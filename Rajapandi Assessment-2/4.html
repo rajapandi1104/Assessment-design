@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trigger Alert Task</title>
+</head>
+<body>
+<center>
+  <form id="myForm">
+    <div class id="tyt">
+    <label for="name" style="font-family:Georgia, 'Times New Roman', Times, serif;">Name:</label>
+    <input type="text" id="name" name="name" style="background-color: blanchedalmond;">
+    <br>
+    <br>
+    <button type="submit" style="background-color:blanchedalmond ;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 30px;">Submit</button>
+  </form>
+</div>
+</center>
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function(event) 
+    {
+      event.preventDefault();
+      var nameInput = document.getElementById("name").value;
+      if (nameInput.trim() === "") {
+        alert("Error");
+      } else {
+        alert("Success");
+      }
+    }
+    );
+  </script>
+</body>
+</html>

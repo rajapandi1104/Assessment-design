@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body style="background-color: beige;">
+    <center>
+    <h1>Form Validation</h1>
+
+  <form id="myForm">
+    <label for="name" style="font-family: 'Times New Roman', Times, serif;">Name:</label>
+    <input type="text" id="name" name="name" required maxlength="20">
+    <br>
+    <br>
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" maxlength="35">
+    <br>
+    <br>
+    <button type="submit" style="font-family: 'Times New Roman', Times, serif
+    ";>Submit</button>
+  </form>
+</center>
+  <script>
+    $(document).ready(function() {
+      $('#myForm').submit(function(e) {
+        e.preventDefault();
+        var name = $('#name').val();
+        var email = $('#email').val();
+        if (name.length === 0) {
+          alert('Name field is mandatory.');
+          return;
+        }
+        if (name.length > 20) {
+          alert('Name field should not exceed 20 characters.');
+          return;
+        }
+                if (email.length > 35) {
+          alert('Email Address should not exceed 35 characters.');
+          return;
+        }
+        if ($('.error').length === 0) {
+          alert("Form submitted successfully!");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
