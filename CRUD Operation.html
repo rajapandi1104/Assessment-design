@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<style>body
+  {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      background-color: beige;
+  
+  } 
+  input[type=text] {
+      width: 60%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 40px;;
+      background-color: #3CBC8D;
+      color: white;
+    }
+    input[type=number] {
+      width: 60%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 40px;;
+      background-color: #3CBC8D;
+      color: white;
+    }
+  
+    input[type=email] {
+      width: 60%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 40px;;
+      background-color: #3CBC8D;
+      color: white;
+    }
+  
+  </style>
+<body>
+    <div id="vishal">
+      <center>
+     
+      <h1>Employee Record</h1>
+      <br>
+        
+         <table id="tableData" border="1" cellpadding="2">
+          <tr>
+           <td><b>Name</b></td>
+           <td><b>Number</b></td>
+           <td><b>Email Id</b></td>
+          </tr>
+         </table>
+        </center>
+        
+       <center>
+
+    <h2>Fill the below form:</h2>
+    <br>
+    <label>Name:</label>
+    <input type="text" id="name"><br><br>
+    <label>Number:</label>
+    <input type="number" id="number"><br><br>
+    <label>Email Id:</label>
+    <input type="email" id="email"><br><br>
+    <button  onclick="addTableRow()" value="Add" style="background-color: limegreen;" >Add Employee Details</button>
+    
+  
+   </div>
+  </center>
+   <script>
+   function addTableRow() {
+    var name = document.getElementById("name");
+    var number = document.getElementById("number");
+    var email = document.getElementById("email");
+    var table = document.getElementById("tableData");
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+    row.insertCell(0).innerHTML= name.value;
+    row.insertCell(1).innerHTML= number.value;
+    row.insertCell(2).innerHTML= email.value;
+    row.insertCell(3).innerHTML='<button class="editBtn">edit</button> <button class="deleteBtn">delete</button>';
+}
+$(document).on('click', '.editBtn', function() {
+      var row = $(this).closest('tr');
+      var name = row.find('td:eq(0)').text();
+      var number = row.find('td:eq(1)').text();
+      var email = row.find('td:eq(2)').text();
+      $('#name').val(name);
+      $('#email').val(email);
+      $('#number').val(number);
+      row.remove();
+    });
+   $(document).on('click','.deleteBtn',function(){
+          $(this).closest('tr').remove();
+        })
+   </Script>
+   </body>
+   </html>
